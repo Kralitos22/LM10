@@ -13,7 +13,7 @@ export const TOKEN = {
     name:       'GOAT TOKEN',
     ticker:     '$GOAT',
     supply:     '1,000,000,000',
-    contract:   'So11111111111111111111111111111111111111112',
+    contract:   'Av6zkyDCFmpn7kNH3JuzDdPMTMkR22PzWma9JZh5pump',
     launchDate: '2026-06-11T18:00:00Z',
     buyUrl:     'https://jup.ag/',
     dexUrl:     'https://dexscreener.com/',
