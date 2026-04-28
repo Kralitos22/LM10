@@ -24,7 +24,7 @@ export const TOKEN = {
         marketCap: 1250000,
         liquidity: 380000,
         holders:   8420,
-        volume24h: 1920000,
+        volume24h: 920000,
         price:     0.00042,
     },
 };
