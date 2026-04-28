@@ -9,6 +9,7 @@ import Particles    from '@/components/Particles';
 import Navbar       from '@/components/Navbar';
 import Hero         from '@/components/Hero';
 import Marquee      from '@/components/Marquee';
+import Gallery      from '@/components/Gallery';
 import HowToBuy     from '@/components/HowToBuy';
 import Legacy       from '@/components/Legacy';
 import About        from '@/components/About';
@@ -52,6 +53,7 @@ export default function HomePage() {
             <main>
                 <Hero stats={stats} />
                 <Marquee />
+                <Gallery />
                 <HowToBuy />
                 <Legacy />
                 <About />

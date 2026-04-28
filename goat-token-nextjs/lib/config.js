@@ -6,20 +6,17 @@
    ============================================================ */
 
 export const TOKEN = {
-    name:       'GOAT TOKEN',                                        // GANTI NAMA TOKEN
-    ticker:     '$GOAT',                                             // GANTI TICKER
-    supply:     '777,000,000',                                       // GANTI SUPPLY
-    contract:   'So11111111111111111111111111111111111111112',       // GANTI CONTRACT ADDRESS
-    launchDate: '2026-06-11T18:00:00Z',                              // GANTI TANGGAL LAUNCH / EVENT
-    buyUrl:     'https://jup.ag/',                                   // GANTI LINK SWAP
-    dexUrl:     'https://dexscreener.com/',                          // GANTI LINK DEXSCREENER
+    name:       'GOAT TOKEN',
+    ticker:     '$GOAT',
+    supply:     '1,000,000,000',
+    contract:   'So11111111111111111111111111111111111111112',
+    launchDate: '2026-06-11T18:00:00Z',
+    buyUrl:     'https://jup.ag/',
+    dexUrl:     'https://dexscreener.com/',
 
-    // Social media links
     social: {
-        twitter:   'https://twitter.com/yourgoatcoin',
-        telegram:  'https://t.me/yourgoatcoin',
-        discord:   'https://discord.gg/goat',
-        instagram: 'https://instagram.com/yourgoatcoin',
+        twitter:   'https://x.com/LM10_life',
+        telegram:  'https://t.me/+VnGH23m8pZo1ZGI9',
     },
 
     // Stats awal (angka palsu untuk animasi hype)

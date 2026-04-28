@@ -6,20 +6,17 @@ import { useToast } from './ToastProvider';
 import ScrollReveal from './ScrollReveal';
 
 /* ============================================================
-   HERO
+   HERO — MESSI EDITION
    ------------------------------------------------------------
-   Bagian paling besar & impactful. Berisi:
-   - Tagline + headline besar
-   - Countdown ke launch date
-   - Contract address + copy button (toast + confetti)
-   - Dua CTA (BUY + DEX)
-   - Fake live stats (MC, Liq, Holders, Vol)
+   - Full-screen Messi background
+   - Glassmorphism card untuk konten
+   - Tagline: The GOAT of Crypto — Messi
+   - Countdown, contract, CTAs, live stats
 ============================================================ */
 
 export default function Hero({ stats }) {
     const { showToast, fireConfetti } = useToast();
 
-    // Copy CA ke clipboard
     const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(TOKEN.contract);
@@ -30,65 +27,78 @@ export default function Hero({ stats }) {
         }
     };
 
-    // Handler tombol BUY
     const handleBuy = () => {
         fireConfetti(80);
         showToast("LET'S GOOO! 🚀");
-        // Uncomment untuk auto-redirect:
-        // setTimeout(() => window.open(TOKEN.buyUrl, '_blank'), 600);
     };
 
     return (
         <section
             id="home"
-            className="relative min-h-screen flex items-center justify-center pt-24 pb-12 field-bg hero-glow overflow-hidden"
+            className="relative min-h-screen flex items-center justify-center messi-bg messi-bg-overlay grid-overlay pt-24 pb-16 overflow-hidden"
         >
-            {/* Floating emoji decoration */}
-            <div className="absolute top-28 left-[8%] text-5xl float opacity-40 hidden md:block">🏆</div>
-            <div className="absolute top-40 right-[10%] text-5xl float opacity-40 hidden md:block" style={{ animationDelay: '-2s' }}>⚽</div>
-            <div className="absolute bottom-32 left-[12%] text-4xl float opacity-40 hidden md:block" style={{ animationDelay: '-1s' }}>🔥</div>
+            {/* Radial gradient bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-t from-[#050508] to-transparent z-[2] pointer-events-none" />
 
-            <div className="relative max-w-6xl mx-auto px-5 text-center z-10">
-                {/* Tag NOW LIVE */}
-                <ScrollReveal className="inline-flex items-center gap-2 bg-night-card border border-gold/30 rounded-full px-4 py-2 mb-8">
-                    <span className="w-2 h-2 bg-football-red rounded-full live-dot"></span>
-                    <span className="text-xs md:text-sm font-semibold tracking-[0.3em] text-gold">
+            {/* Floating star decorations */}
+            <div className="absolute top-36 left-[6%] w-1 h-1 bg-gold rounded-full opacity-50 float-slow shadow-[0_0_8px_rgba(250,204,21,0.8)] hidden md:block" />
+            <div className="absolute top-48 right-[8%] w-1.5 h-1.5 bg-gold rounded-full opacity-40 float-slow hidden md:block" style={{ animationDelay: '-2s' }} />
+            <div className="absolute bottom-44 left-[15%] w-1 h-1 bg-white/40 rounded-full float-slow hidden md:block" style={{ animationDelay: '-1s' }} />
+            <div className="absolute top-28 right-[20%] w-0.5 h-0.5 bg-gold rounded-full opacity-60 float-slow hidden md:block" style={{ animationDelay: '-3s' }} />
+            <div className="absolute bottom-60 right-[12%] w-1 h-1 bg-white/30 rounded-full float-slow hidden md:block" style={{ animationDelay: '-4s' }} />
+
+            <div className="relative max-w-5xl mx-auto px-5 text-center z-10">
+
+                {/* Badge */}
+                <ScrollReveal className="inline-flex items-center gap-2 glass-gold rounded-full px-5 py-2.5 mb-8 border-glow">
+                    <div className="w-8 h-8 rounded-full overflow-hidden border border-gold/40 flex-shrink-0 flex items-center justify-center bg-black/20">
+                        <img src="/lm10-circle-nav.png" alt="LM10" className="w-full h-full object-cover" />
+                    </div>
+                    <span className="w-2.5 h-2.5 bg-football-green rounded-full live-dot" />
+                    <span className="text-xs md:text-sm font-bold tracking-[0.35em] text-gold">
                         NOW LIVE ON SOLANA
                     </span>
+                    <span className="w-5 h-5 flex items-center justify-center text-sm">⚡</span>
                 </ScrollReveal>
 
-                {/* Headline utama */}
-                <ScrollReveal as="h1" className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none tracking-wide headline-shadow">
-                    <span className="block text-white">THE</span>
-                    <span className="block gradient-gold">GOAT COIN</span>
+                {/* Main headline */}
+                <ScrollReveal as="h1" className="font-display text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] leading-none tracking-wide">
+                    <span className="block text-white/90">THE</span>
+                    <span className="block gradient-aurora">GOAT COIN</span>
                 </ScrollReveal>
 
-                {/* Subheadline */}
-                <ScrollReveal as="p" className="mt-6 text-xl md:text-3xl font-bold text-gray-300">
-                    The Last Dance · <span className="text-gold">World Cup 2026</span>
+                {/* Subtitle with Messi badge */}
+                <ScrollReveal as="p" className="mt-6 text-xl md:text-3xl font-bold text-white/80">
+                    Messi&apos;s Legacy · <span className="text-gold">World Cup 2026</span>
                 </ScrollReveal>
-                <ScrollReveal as="p" className="mt-3 max-w-2xl mx-auto text-gray-400 text-base md:text-lg">
-                    The greatest comeback in crypto history starts here. Built by the community, fueled by legends, destined for the moon. ⚽🚀
+
+                {/* Messi quote pill */}
+                <ScrollReveal className="mt-5 inline-flex items-center gap-2 glass rounded-full px-5 py-2">
+                    <span className="text-lg">⚽</span>
+                    <span className="text-sm md:text-base text-gray-300 italic font-medium">
+                        &ldquo;In the end, it&apos;s not the years in your life that count. It&apos;s the life in your years.&rdquo;
+                    </span>
+                    <span className="text-xs text-gold font-bold tracking-wider">— LM10</span>
                 </ScrollReveal>
 
                 {/* Countdown */}
                 <ScrollReveal className="mt-10">
-                    <p className="text-xs md:text-sm tracking-[0.4em] text-gold/70 mb-4 font-semibold">
-                        COUNTDOWN TO THE KICKOFF
+                    <p className="text-xs tracking-[0.5em] text-gold/70 mb-5 font-bold uppercase">
+                        Countdown to Glory
                     </p>
                     <Countdown />
                 </ScrollReveal>
 
                 {/* Contract Address + Copy */}
-                <ScrollReveal className="mt-10 max-w-2xl mx-auto">
-                    <p className="text-xs tracking-[0.3em] text-gray-500 mb-2 font-semibold">CONTRACT ADDRESS</p>
-                    <div className="flex items-center bg-night-card border border-gold/25 rounded-full p-1.5 hover:border-gold/60 transition-colors">
-                        <code className="flex-1 px-4 py-2 text-xs md:text-sm font-mono text-gray-300 truncate">
+                <ScrollReveal className="mt-10 max-w-xl mx-auto">
+                    <p className="text-[10px] tracking-[0.35em] text-gray-500 mb-2 font-semibold">CONTRACT ADDRESS</p>
+                    <div className="flex items-center glass-gold rounded-full p-1.5 border-glow hover:border-gold/60 transition-all">
+                        <code className="flex-1 px-4 py-2.5 text-xs md:text-sm font-mono text-gray-300 truncate">
                             {TOKEN.contract}
                         </code>
                         <button
                             onClick={handleCopy}
-                            className="btn-gold px-5 py-2 rounded-full font-bold text-sm uppercase tracking-wider flex items-center gap-2"
+                            className="btn-gold px-5 py-2.5 rounded-full font-bold text-sm uppercase tracking-wider flex items-center gap-2 flex-shrink-0"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -102,47 +112,51 @@ export default function Hero({ stats }) {
                 <ScrollReveal className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <button
                         onClick={handleBuy}
-                        className="btn-gold text-lg md:text-xl px-10 py-4 rounded-full font-extrabold uppercase tracking-wider"
+                        className="btn-gold text-lg md:text-xl px-12 py-4 rounded-full font-extrabold uppercase tracking-wider flex items-center gap-3"
                     >
-                        ⚡ BUY {TOKEN.ticker} NOW
+                        <span>⚡</span> BUY {TOKEN.ticker} NOW
                     </button>
                     <a
                         href={TOKEN.dexUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-ghost text-base px-8 py-4 rounded-full font-bold uppercase tracking-wider"
+                        className="btn-outline-gold text-base px-8 py-4 rounded-full font-bold uppercase tracking-wider flex items-center gap-2"
                     >
-                        📊 View on DexScreener
+                        <span>📊</span> DexScreener
                     </a>
                 </ScrollReveal>
 
                 {/* Live stats grid */}
                 <ScrollReveal className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                    <StatCard label="MARKET CAP" value={formatMoney(stats.marketCap)} />
-                    <StatCard label="LIQUIDITY"  value={formatMoney(stats.liquidity)} />
-                    <StatCard label="HOLDERS"    value={stats.holders.toLocaleString()} />
-                    <StatCard label="VOLUME 24H" value={formatMoney(stats.volume24h)} />
+                    <StatCard label="MARKET CAP"  value={formatMoney(stats.marketCap)} icon="📈" />
+                    <StatCard label="LIQUIDITY"   value={formatMoney(stats.liquidity)} icon="💧" />
+                    <StatCard label="HOLDERS"     value={stats.holders.toLocaleString()} icon="👥" />
+                    <StatCard label="24H VOLUME"  value={formatMoney(stats.volume24h)} icon="⚡" />
                 </ScrollReveal>
+
+                {/* Scroll indicator */}
+                <div className="mt-12 flex flex-col items-center gap-2 opacity-50">
+                    <span className="text-xs tracking-[0.3em] text-gold/60 font-semibold">SCROLL</span>
+                    <div className="w-5 h-8 border-2 border-gold/40 rounded-full flex justify-center pt-1">
+                        <div className="w-1 h-2 bg-gold/60 rounded-full animate-bounce" />
+                    </div>
+                </div>
             </div>
         </section>
     );
 }
 
 /* ============================================================
-   COUNTDOWN TIMER (sub-component)
+   COUNTDOWN TIMER
 ============================================================ */
 function Countdown() {
     const [time, setTime] = useState(null);
 
     useEffect(() => {
         const target = new Date(TOKEN.launchDate).getTime();
-
         const tick = () => {
             const diff = target - Date.now();
-            if (diff <= 0) {
-                setTime({ done: true });
-                return;
-            }
+            if (diff <= 0) { setTime({ done: true }); return; }
             setTime({
                 d: Math.floor(diff / 86400000),
                 h: Math.floor((diff % 86400000) / 3600000),
@@ -150,31 +164,30 @@ function Countdown() {
                 s: Math.floor((diff % 60000) / 1000),
             });
         };
-
         tick();
         const id = setInterval(tick, 1000);
         return () => clearInterval(id);
     }, []);
 
-    if (!time) return <div className="flex justify-center gap-3 md:gap-6 min-h-[100px]"></div>;
+    if (!time) return <div className="flex justify-center gap-3 md:gap-5 min-h-[110px]" />;
 
     if (time.done) {
         return <p className="text-3xl font-display gradient-gold">🏆 KICKOFF! WE&apos;RE LIVE</p>;
     }
 
     const Box = ({ val, label }) => (
-        <div className="bg-night-card border border-gold/30 rounded-xl px-3 py-3 md:px-6 md:py-4 min-w-[70px] md:min-w-[100px]">
-            <div className="font-display text-3xl md:text-5xl gradient-gold">
+        <div className="glass-gold rounded-2xl px-4 py-4 md:px-7 md:py-5 min-w-[75px] md:min-w-[105px] border-glow">
+            <div className="font-display text-3xl md:text-5xl gradient-gold leading-none">
                 {String(val).padStart(2, '0')}
             </div>
-            <div className="text-[10px] md:text-xs text-gray-500 tracking-[0.2em] mt-1 font-semibold">
+            <div className="text-[10px] md:text-xs text-gray-400 tracking-[0.2em] mt-2 font-semibold uppercase">
                 {label}
             </div>
         </div>
     );
 
     return (
-        <div className="flex justify-center gap-3 md:gap-6">
+        <div className="flex justify-center gap-3 md:gap-5">
             <Box val={time.d} label="DAYS"  />
             <Box val={time.h} label="HOURS" />
             <Box val={time.m} label="MINS"  />
@@ -184,13 +197,14 @@ function Countdown() {
 }
 
 /* ============================================================
-   STAT CARD (sub-component)
+   STAT CARD
 ============================================================ */
-function StatCard({ label, value }) {
+function StatCard({ label, value, icon }) {
     return (
-        <div className="card-glow rounded-2xl p-5">
-            <p className="text-xs text-gray-500 font-semibold tracking-wider">{label}</p>
-            <p className="text-xl md:text-2xl font-display gradient-gold mt-1">{value}</p>
+        <div className="card-glow rounded-2xl p-5 text-center glass">
+            <div className="text-2xl mb-2">{icon}</div>
+            <p className="text-[10px] text-gray-500 tracking-widest font-semibold uppercase">{label}</p>
+            <p className="text-xl md:text-2xl font-display gradient-gold mt-2">{value}</p>
         </div>
     );
 }

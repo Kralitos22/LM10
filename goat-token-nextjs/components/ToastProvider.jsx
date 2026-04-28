@@ -43,7 +43,7 @@ export function ToastProvider({ children }) {
     return (
         <ToastContext.Provider value={{ showToast, fireConfetti }}>
             {children}
-            <div className={`toast ${show ? 'show' : ''}`}>{msg}</div>
+            {/* <div className={`toast ${show ? 'show' : ''}`}>{msg}</div> */}
         </ToastContext.Provider>
     );
 }

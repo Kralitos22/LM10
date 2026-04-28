@@ -9,10 +9,12 @@ import { TOKEN } from '@/lib/config';
 
 const NAV_LINKS = [
     { href: '#home',       label: 'HOME' },
+    { href: '#gallery',    label: 'GALLERY' },
     { href: '#how-to-buy', label: 'HOW TO BUY' },
     { href: '#legacy',     label: 'LEGACY' },
     { href: '#about',      label: 'ABOUT' },
-    { href: '#press',      label: 'THE PRESS' },
+    { href: '#tokenomics', label: 'TOKENOMICS' },
+    { href: '#press',      label: 'PRESS' },
     { href: '#community',  label: 'COMMUNITY' },
 ];
 
@@ -35,15 +37,22 @@ export default function Navbar({ navPrice }) {
         >
             <div className="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-16 md:h-20">
                 {/* Logo */}
-                <a href="#home" className="flex items-center gap-2">
-                    <span className="text-3xl">⚽</span>
-                    <span className="font-display text-2xl md:text-3xl gradient-gold tracking-wider">
-                        {TOKEN.ticker}
-                    </span>
+                <a href="#home" className="flex items-center gap-3 group">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden flex-shrink-0 border border-gold/30 shadow-[0_0_15px_rgba(250,204,21,0.2)] group-hover:shadow-[0_0_25px_rgba(250,204,21,0.4)] transition-all">
+                        <img
+                            src="/lm10-circle-nav.png"
+                            alt="LM10 Logo"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div>
+                        <span className="font-display text-2xl md:text-3xl gradient-gold tracking-wider leading-none block">$GOAT</span>
+                        <span className="text-[9px] text-gold/50 tracking-[0.3em] uppercase hidden sm:block">LM10 · The GOAT</span>
+                    </div>
                 </a>
 
                 {/* Desktop menu */}
-                <ul className="hidden lg:flex items-center gap-8 font-semibold text-sm tracking-wide">
+                <ul className="hidden lg:flex items-center gap-6 font-semibold text-sm tracking-wide">
                     {NAV_LINKS.map(link => (
                         <li key={link.href}>
                             <a href={link.href} className="hover:text-gold transition-colors">

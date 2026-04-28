@@ -23,8 +23,8 @@ const STEPS = [
     {
         num:   '03',
         icon:  '🔄',
-        title: 'SWAP ON JUPITER',
-        desc:  `Head to Jupiter or Raydium, paste the ${TOKEN.ticker} contract address, and swap your SOL.`,
+        title: 'SWAP ON PHANTOM',
+        desc:  `Open your Phantom wallet, go to the Swap tab, paste the ${TOKEN.ticker} contract address, and swap your SOL for $GOAT.`,
     },
     {
         num:   '04',
