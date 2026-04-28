@@ -13,7 +13,7 @@ import { useDexScreenerStats } from '@/lib/useDexScreenerStats';
 export default function Hero() {
     // ==================== LIVE STATS DARI DEXSCREENER ====================
     const liveStats = useDexScreenerStats(
-        'lllllllllllllllll',   // Pair Address kamu (sudah terisi)
+        '6m1ZWwXmVFTPWpyTP8PNNGfFmumGRV6Xhf1iwoLReGjh',   // Pair Address kamu (sudah terisi)
         'solana'
     );
 
