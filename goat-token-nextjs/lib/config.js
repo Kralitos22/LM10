@@ -1,3 +1,7 @@
+
+
+
+
 /* ============================================================
    KONFIGURASI TOKEN
    ============================================================
@@ -20,13 +24,7 @@ export const TOKEN = {
     },
 
     // Stats awal (angka palsu untuk animasi hype)
-    initialStats: {
-        marketCap: 1250000,
-        liquidity: 380000,
-        holders:   8420,
-        volume24h: 920000,
-        price:     0.00042,
-    },
+    
 };
 
 // Helper formatter dipakai beberapa komponen
