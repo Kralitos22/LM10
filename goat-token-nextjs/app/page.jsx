@@ -17,6 +17,7 @@ import Tokenomics   from '@/components/Tokenomics';
 import Press        from '@/components/Press';
 import Community    from '@/components/Community';
 import Footer       from '@/components/Footer';
+import { useDexScreenerStats } from '@/lib/useDexScreenerStats';
 
 /* ============================================================
    HOME PAGE
@@ -26,32 +27,19 @@ import Footer       from '@/components/Footer';
 ============================================================ */
 
 export default function HomePage() {
-    // State untuk fake live stats (di-update setiap 2.5 detik)
-    const [stats, setStats] = useState(TOKEN.initialStats);
-
-    useEffect(() => {
-        const id = setInterval(() => {
-            setStats(prev => ({
-                marketCap: prev.marketCap + (Math.random() - 0.45) * 3000,
-                liquidity: prev.liquidity + (Math.random() - 0.5)  * 800,
-                holders:   prev.holders   + (Math.random() > 0.7 ? 1 : 0),
-                volume24h: prev.volume24h + (Math.random() - 0.4)  * 2000,
-                price:     prev.price     + (Math.random() - 0.48) * 0.000005,
-            }));
-        }, 2500);
-
-        return () => clearInterval(id);
-    }, []);
-
+    const liveStats = useDexScreenerStats(
+    'llllllllllllllll',   // Pair Address kamu
+    'solana'
+  );
     return (
         <ToastProvider>
             <Loader />
             <Particles />
 
-            <Navbar navPrice={stats.price} />
+           <Navbar navPrice={liveStats.price} />
 
             <main>
-                <Hero stats={stats} />
+                <Hero />
                 <Marquee />
                 <Gallery />
                 <HowToBuy />
