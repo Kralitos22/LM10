@@ -4,17 +4,19 @@ import { useEffect, useState } from 'react';
 import { TOKEN, formatMoney } from '@/lib/config';
 import { useToast } from './ToastProvider';
 import ScrollReveal from './ScrollReveal';
+import { useDexScreenerStats } from '@/lib/useDexScreenerStats';
 
 /* ============================================================
-   HERO — MESSI EDITION
-   ------------------------------------------------------------
-   - Full-screen Messi background
-   - Glassmorphism card untuk konten
-   - Tagline: The GOAT of Crypto — Messi
-   - Countdown, contract, CTAs, live stats
+   HERO — MESSI EDITION (LIVE DEXSCREENER)
 ============================================================ */
 
-export default function Hero({ stats }) {
+export default function Hero() {
+    // ==================== LIVE STATS DARI DEXSCREENER ====================
+    const liveStats = useDexScreenerStats(
+        'lllllllllllllllll',   // Pair Address kamu (sudah terisi)
+        'solana'
+    );
+
     const { showToast, fireConfetti } = useToast();
 
     const handleCopy = async () => {
@@ -126,12 +128,32 @@ export default function Hero({ stats }) {
                     </a>
                 </ScrollReveal>
 
-                {/* Live stats grid */}
+                {/* ==================== LIVE STATS GRID ==================== */}
                 <ScrollReveal className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                    <StatCard label="MARKET CAP"  value={formatMoney(stats.marketCap)} icon="📈" />
-                    <StatCard label="LIQUIDITY"   value={formatMoney(stats.liquidity)} icon="💧" />
-                    <StatCard label="HOLDERS"     value={stats.holders.toLocaleString()} icon="👥" />
-                    <StatCard label="24H VOLUME"  value={formatMoney(stats.volume24h)} icon="⚡" />
+                    <StatCard 
+                        label="MARKET CAP" 
+                        value={formatMoney(liveStats.marketCap)} 
+                        icon="📈" 
+                    />
+                    <StatCard 
+                        label="LIQUIDITY" 
+                        value={formatMoney(liveStats.liquidity)} 
+                        icon="💧" 
+                    />
+                    <StatCard 
+                        label="PRICE" 
+                        value={
+                            liveStats.price < 0.01 
+                                ? `$${liveStats.price.toFixed(8)}` 
+                                : `$${liveStats.price.toLocaleString()}`
+                        } 
+                        icon="💲" 
+                    />
+                    <StatCard 
+                        label="24H VOLUME" 
+                        value={formatMoney(liveStats.volume24h)} 
+                        icon="⚡" 
+                    />
                 </ScrollReveal>
 
                 {/* Scroll indicator */}
@@ -197,7 +219,7 @@ function Countdown() {
 }
 
 /* ============================================================
-   STAT CARD
+   STAT CARD (Sudah ada di file kamu)
 ============================================================ */
 function StatCard({ label, value, icon }) {
     return (
