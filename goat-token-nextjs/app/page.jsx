@@ -28,7 +28,7 @@ import { useDexScreenerStats } from '@/lib/useDexScreenerStats';
 
 export default function HomePage() {
     const liveStats = useDexScreenerStats(
-    'llllllllllllllll',   // Pair Address kamu
+    '6m1ZWwXmVFTPWpyTP8PNNGfFmumGRV6Xhf1iwoLReGjh',   // Pair Address kamu
     'solana'
   );
     return (
