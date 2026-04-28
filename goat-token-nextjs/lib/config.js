@@ -15,7 +15,7 @@ export const TOKEN = {
     dexUrl:     'https://dexscreener.com/',
 
     social: {
-        twitter:   'https://x.com/LM10_life',
+        twitter:   'https://x.com/goat_lm1o?s=21',
         telegram:  'https://t.me/+VnGH23m8pZo1ZGI9',
     },
 
